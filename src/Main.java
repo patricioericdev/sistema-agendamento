@@ -1,5 +1,8 @@
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Sistema de agendamento iniciado!");
-    }
+public static void main(String[] args) {
+    Servico corte = new Servico("Corte", 30);
+    Servico barba = new Servico("Barba", 20);
+
+    System.out.println(corte);
+    System.out.println(barba);
+    System.out.println("Duração do corte: " + corte.getDuracaoMinutos() + " minutos");
 }
