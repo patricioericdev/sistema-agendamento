@@ -4,6 +4,9 @@ public class Servico {
     private int duracaoMinutos;
 
     public Servico(String nome, int duracaoMinutos) {
+        if (duracaoMinutos <= 0) {
+            throw new IllegalArgumentException("A duração deve ser maior que zero.");
+        }
         this.nome = nome;
         this.duracaoMinutos = duracaoMinutos;
     }
