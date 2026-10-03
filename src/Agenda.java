@@ -63,6 +63,10 @@ public class Agenda {
     }
 
     public void mostrarAgenda() {
+        if (agendamentos.isEmpty()){
+            System.out.println("Nenhum agendamento ainda.");
+            return;
+        }
         for (Agendamento a : agendamentos) {
             System.out.println(a);
         }
