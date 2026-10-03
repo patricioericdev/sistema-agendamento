@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class Agenda {
 
@@ -41,6 +42,24 @@ public class Agenda {
 
         agendamentos.add(new Agendamento(cliente, servico, inicio));
         return true;
+    }
+
+    public List<LocalTime> horariosLivres(LocalDate dia, Servico servico){
+        List<LocalTime> livres = new ArrayList<>();
+        LocalTime hora = abertura;
+
+        while (!hora.isAfter(fechamento)){
+            LocalDateTime inicio = LocalDateTime.of(dia, hora);
+            LocalDateTime fim = inicio.plusMinutes(servico.getDuracaoMinutos());
+
+            if (dentroDoExpediente(inicio, fim) && !temConflito(inicio, fim)){
+                livres.add(hora);
+            }
+
+            hora = hora.plusMinutes(30);
+        }
+
+        return livres;
     }
 
     public void mostrarAgenda() {
